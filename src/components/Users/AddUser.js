@@ -1,9 +1,9 @@
 import Card from "../UI/Card";
 import styles from "./AddUser.module.css";
 import Button from "../UI/Button";
-import { useState } from "react";
+import React, { useState } from "react";
 import ErrorModal from "../UI/ErrorModal";
-import Wrapper from "../Helpers/Wrapper";
+// import  from "../Helpers/";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -37,17 +37,17 @@ const AddUser = (props) => {
   const addAge = (event) => {
     setEnteredAge(event.target.value);
   };
-  const onClickError = () => {
+  const clickError = () => {
     setError(null);
   };
 
   return (
-    <Wrapper>
+    <React.Fragment>
       {error && (
         <ErrorModal
           title={error.title}
           msg={error.msg}
-          onClick={onClickError}
+          onConfirm={clickError}
         />
       )}
       <Card className={styles.input}>
@@ -64,7 +64,7 @@ const AddUser = (props) => {
           <Button type="submit" content="Submit" onChange="" />
         </form>
       </Card>
-    </Wrapper>
+    </React.Fragment>
   );
 };
 export default AddUser;
